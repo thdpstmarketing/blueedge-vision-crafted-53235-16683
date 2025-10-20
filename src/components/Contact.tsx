@@ -193,99 +193,97 @@ export const Contact = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-3 bg-card p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border-2 border-border shadow-2xl"
+            className="lg:col-span-3 bg-card p-4 sm:p-6 lg:p-10 rounded-2xl sm:rounded-3xl border-2 border-border shadow-2xl"
           >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5 lg:space-y-6">
+              <div className="grid gap-4 sm:gap-5 lg:gap-6">
                 <div>
-                  <Label htmlFor="name" className="text-sm font-bold uppercase tracking-wide">Name *</Label>
+                  <Label htmlFor="name" className="text-xs sm:text-sm font-bold uppercase tracking-wide">Name *</Label>
                   <Input
                     id="name"
                     {...register("name")}
                     placeholder="Your full name"
-                    className="mt-2 h-12"
+                    className="mt-1.5 sm:mt-2 h-10 sm:h-11 lg:h-12 text-sm sm:text-base"
                   />
                   {errors.name && (
-                    <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+                    <p className="text-xs sm:text-sm text-destructive mt-1">{errors.name.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-sm font-bold uppercase tracking-wide">Email *</Label>
+                  <Label htmlFor="email" className="text-xs sm:text-sm font-bold uppercase tracking-wide">Email *</Label>
                   <Input
                     id="email"
                     type="email"
                     {...register("email")}
                     placeholder="your.email@example.com"
-                    className="mt-2 h-12"
+                    className="mt-1.5 sm:mt-2 h-10 sm:h-11 lg:h-12 text-sm sm:text-base"
                   />
                   {errors.email && (
-                    <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
+                    <p className="text-xs sm:text-sm text-destructive mt-1">{errors.email.message}</p>
                   )}
                 </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <Label htmlFor="phone" className="text-sm font-bold uppercase tracking-wide">Phone *</Label>
+                  <Label htmlFor="phone" className="text-xs sm:text-sm font-bold uppercase tracking-wide">Phone *</Label>
                   <Input
                     id="phone"
                     type="tel"
                     {...register("phone")}
                     placeholder="+27 79 336 5471"
-                    className="mt-2 h-12"
+                    className="mt-1.5 sm:mt-2 h-10 sm:h-11 lg:h-12 text-sm sm:text-base"
                   />
                   {errors.phone && (
-                    <p className="text-sm text-destructive mt-1">{errors.phone.message}</p>
+                    <p className="text-xs sm:text-sm text-destructive mt-1">{errors.phone.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <Label htmlFor="service" className="text-sm font-bold uppercase tracking-wide">Service Required *</Label>
+                  <Label htmlFor="service" className="text-xs sm:text-sm font-bold uppercase tracking-wide">Service Required *</Label>
                   <Select onValueChange={(value) => setValue("service", value)}>
-                    <SelectTrigger className="mt-2 h-12">
+                    <SelectTrigger className="mt-1.5 sm:mt-2 h-10 sm:h-11 lg:h-12 text-sm sm:text-base">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
-                    <SelectContent className="bg-popover border-2 border-border max-h-[300px] z-50">
+                    <SelectContent className="bg-popover border-2 border-border max-h-[250px] sm:max-h-[300px] z-50">
                       {services.map((service) => (
-                        <SelectItem key={service} value={service} className="cursor-pointer">
+                        <SelectItem key={service} value={service} className="cursor-pointer text-sm sm:text-base">
                           {service}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                   {errors.service && (
-                    <p className="text-sm text-destructive mt-1">{errors.service.message}</p>
+                    <p className="text-xs sm:text-sm text-destructive mt-1">{errors.service.message}</p>
                   )}
                 </div>
-              </div>
 
-              <div>
-                <Label htmlFor="message" className="text-sm font-bold uppercase tracking-wide">Message *</Label>
-                <Textarea
-                  id="message"
-                  {...register("message")}
-                  placeholder="Tell us about your project and vision..."
-                  rows={6}
-                  className="mt-2"
-                />
-                {errors.message && (
-                  <p className="text-sm text-destructive mt-1">{errors.message.message}</p>
-                )}
+                <div>
+                  <Label htmlFor="message" className="text-xs sm:text-sm font-bold uppercase tracking-wide">Message *</Label>
+                  <Textarea
+                    id="message"
+                    {...register("message")}
+                    placeholder="Tell us about your project and vision..."
+                    rows={5}
+                    className="mt-1.5 sm:mt-2 text-sm sm:text-base resize-none"
+                  />
+                  {errors.message && (
+                    <p className="text-xs sm:text-sm text-destructive mt-1">{errors.message.message}</p>
+                  )}
+                </div>
               </div>
 
               <Button
                 type="submit"
                 variant="default"
                 size="lg"
-                className="w-full h-14 text-lg font-bold group"
+                className="w-full h-11 sm:h-12 lg:h-14 text-sm sm:text-base lg:text-lg font-bold group"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending to WhatsApp..." : "Send Message via WhatsApp"}
-                <MessageCircle className="ml-2 group-hover:scale-110 transition-transform" />
+                <span className="truncate">{isSubmitting ? "Sending..." : "Send via WhatsApp"}</span>
+                <MessageCircle className="ml-2 flex-shrink-0 group-hover:scale-110 transition-transform" />
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-[10px] sm:text-xs text-muted-foreground text-center leading-relaxed">
                 Your message will open in WhatsApp for secure, direct communication with our team.
               </p>
             </form>

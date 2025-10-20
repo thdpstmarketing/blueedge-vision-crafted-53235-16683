@@ -1,5 +1,5 @@
 import logo from "@/assets/logo.png";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -58,14 +58,9 @@ export const Footer = () => {
 
             <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-6">
               <a
-                href="#"
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/blueedge_designs?igsh=Y2d3NndudjVvaThw"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="Instagram"
               >
